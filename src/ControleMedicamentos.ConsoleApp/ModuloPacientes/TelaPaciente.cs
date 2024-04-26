@@ -4,6 +4,7 @@
     {
         public string[] RegistrarPaciente(int pacienteContador, string[] Pacientes)
         {
+            RepositorioPacientes repositorio = new RepositorioPacientes();
             Paciente paciente = new Paciente();
             int contadorPaciente = pacienteContador;
             paciente.Pacientes = Pacientes;
@@ -13,11 +14,14 @@
             paciente.CPF = Console.ReadLine();
             Console.WriteLine("Digite o Endereço do paciente:");
             paciente.Endereco = Console.ReadLine();
-            paciente.Pacientes[pacienteContador] = "Paciente Número: " + contadorPaciente + "\nNome: " + paciente.Nome + "\nCPF: " + paciente.CPF + "\nEndereço: " + paciente.Endereco;
+            repositorio.CadastrarPaciente(pacienteContador, paciente, contadorPaciente);
             Console.WriteLine("Paciente Cadastrado!");
 
             return paciente.Pacientes;
         }
+
+       
+
         public void VisualizarPaciente(string[] Pacientes, int contador)
         {
             string[] pacientes = Pacientes;

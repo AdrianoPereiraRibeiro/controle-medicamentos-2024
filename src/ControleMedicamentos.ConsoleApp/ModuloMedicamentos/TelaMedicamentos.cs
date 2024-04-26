@@ -2,8 +2,10 @@
 {
     public class TelaMedicamentos
     {
+        
         public string[] CadastrarMedicamento(int contadorMedicamentos, string[] estoque)
         {
+            RepositorioMedicamentos repositorioMedicamentos = new RepositorioMedicamentos();
             Medicamentos medicamentos = new Medicamentos();
             medicamentos.MedicamentosCadastrados = estoque;
             Console.WriteLine("Digite o nome do medicamento:");
@@ -14,12 +16,14 @@
             medicamentos.Quantidade = Console.ReadLine();
             Console.WriteLine("Digite o nome do Fornecedor:");
             medicamentos.Fornecedor = Console.ReadLine();
-            medicamentos.MedicamentosCadastrados[contadorMedicamentos] = "Medicamento Número: " + contadorMedicamentos / 2 + "\nNome: " + medicamentos.nome + "\nDescrição: " + medicamentos.Descricao + "\nFornecedor: " + medicamentos.Fornecedor + "\nQuantidade: ";
-            medicamentos.MedicamentosCadastrados[contadorMedicamentos + 1] = medicamentos.Quantidade; //Contador/2 pois estou salvando a nome e descrição separado da quantidade.
+            repositorioMedicamentos.CadastrarMedicamentos(contadorMedicamentos, medicamentos);
             Console.WriteLine("Medicamento cadastrado com Sucesso!");
 
             return medicamentos.MedicamentosCadastrados;
         }
+
+      
+
         public void MostrarMedicamentos(string[] estoque, int contadorMedicamentos)
         {
             Medicamentos medicamentos = new Medicamentos();
@@ -73,6 +77,17 @@
 
             return medicamentos.MedicamentosCadastrados;
         }
+
+
+    }
+    public class RepositorioMedicamentos
+    {
+        public  void CadastrarMedicamentos(int contadorMedicamentos, Medicamentos medicamentos)
+        {
+            medicamentos.MedicamentosCadastrados[contadorMedicamentos] = "Medicamento Número: " + contadorMedicamentos / 2 + "\nNome: " + medicamentos.nome + "\nDescrição: " + medicamentos.Descricao + "\nFornecedor: " + medicamentos.Fornecedor + "\nQuantidade: ";
+            medicamentos.MedicamentosCadastrados[contadorMedicamentos + 1] = medicamentos.Quantidade; //Contador/2 pois estou salvando a nome e descrição separado da quantidade.
+        }
+
 
 
     }
