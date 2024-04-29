@@ -20,7 +20,7 @@ namespace ControleMedicamentos.ConsoleApp
             string[] Pacientes = new string[100];
             int Opcao = 0;
             Console.WriteLine("Aperte ENTER para Inciar:");
-            while (Opcao != 8)//Refazer saida.
+            while (Opcao != 8)
             {
                 utilitarios.LimpaTela();
                 utilitarios.ExibeOpcoes();
